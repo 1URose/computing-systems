@@ -1,0 +1,67 @@
+        SIMULATE
+
+        GENERATE 10
+        QUEUE H1Q
+        SEIZE H1
+        DEPART H1Q
+        ADVANCE 11
+        RELEASE H1
+        TRANSFER .8,H5,H7
+
+        GENERATE 20
+        QUEUE H2Q
+        SEIZE H2
+        DEPART H2Q
+        ADVANCE 12
+        RELEASE H2
+        TRANSFER .5,H5,H4
+
+        GENERATE 10
+        QUEUE H3Q
+        SEIZE H3
+        DEPART H3Q
+        ADVANCE 13
+        RELEASE H3
+        TRANSFER .3,H4,H6
+
+H4      QUEUE H4Q
+        SEIZE H4
+        DEPART H4Q
+        ADVANCE 14
+        RELEASE H4
+        TRANSFER .5,H7,H6
+
+H5      QUEUE H5Q
+        SEIZE H5
+        DEPART H5Q
+        ADVANCE 15
+        RELEASE H5
+        TRANSFER ,H7
+
+H6      QUEUE H6Q
+        SEIZE H6
+        DEPART H6Q
+        ADVANCE 16
+        RELEASE H6
+        TRANSFER .9,H4,H8
+
+H7      QUEUE H7Q
+        SEIZE H7
+        DEPART H7Q
+        ADVANCE 17
+        RELEASE H7
+        TRANSFER .4,H6,H8
+
+H8      QUEUE H8Q
+        SEIZE H8
+        DEPART H8Q
+        ADVANCE 18
+        RELEASE H8
+        TERMINATE
+
+        GENERATE 100
+        TERMINATE 1
+
+        START 1
+        END
+        

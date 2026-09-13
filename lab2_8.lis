@@ -1,0 +1,217 @@
+    Student GPSS/H Release 3.70 (CT256)     13 Sep 2026   14:53:23     File: lab2_8.gps
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                         SIMULATE
+        2     2                  
+        3     3              1          GENERATE 10
+        4     4              2          QUEUE H1Q
+        5     5              3          SEIZE H1
+        6     6              4          DEPART H1Q
+        7     7              5          ADVANCE 11
+        8     8              6          RELEASE H1
+        9     9              7          TRANSFER .8,H5,H7
+       10    10                  
+       11    11              8          GENERATE 20
+       12    12              9          QUEUE H2Q
+       13    13             10          SEIZE H2
+       14    14             11          DEPART H2Q
+       15    15             12          ADVANCE 12
+       16    16             13          RELEASE H2
+       17    17             14          TRANSFER .5,H5,H4
+       18    18                  
+       19    19             15          GENERATE 10
+       20    20             16          QUEUE H3Q
+       21    21             17          SEIZE H3
+       22    22             18          DEPART H3Q
+       23    23             19          ADVANCE 13
+       24    24             20          RELEASE H3
+       25    25             21          TRANSFER .3,H4,H6
+       26    26                  
+       27    27             22  H4      QUEUE H4Q
+       28    28             23          SEIZE H4
+       29    29             24          DEPART H4Q
+       30    30             25          ADVANCE 14
+       31    31             26          RELEASE H4
+       32    32             27          TRANSFER .5,H7,H6
+       33    33                  
+       34    34             28  H5      QUEUE H5Q
+       35    35             29          SEIZE H5
+       36    36             30          DEPART H5Q
+       37    37             31          ADVANCE 15
+       38    38             32          RELEASE H5
+       39    39             33          TRANSFER ,H7
+       40    40                  
+       41    41             34  H6      QUEUE H6Q
+       42    42             35          SEIZE H6
+       43    43             36          DEPART H6Q
+       44    44             37          ADVANCE 16
+       45    45             38          RELEASE H6
+       46    46             39          TRANSFER .9,H4,H8
+       47    47                  
+       48    48             40  H7      QUEUE H7Q
+       49    49             41          SEIZE H7
+       50    50             42          DEPART H7Q
+       51    51             43          ADVANCE 17
+       52    52             44          RELEASE H7
+       53    53             45          TRANSFER .4,H6,H8
+       54    54                  
+       55    55             46  H8      QUEUE H8Q
+       56    56             47          SEIZE H8
+
+    Student GPSS/H Release 3.70 (CT256)     13 Sep 2026   14:53:23     File: lab2_8.gps
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+       57    57             48          DEPART H8Q
+       58    58             49          ADVANCE 18
+       59    59             50          RELEASE H8
+       60    60             51          TERMINATE
+       61    61                  
+       62    62             52          GENERATE 100
+       63    63             53          TERMINATE 1
+       64    64                  
+       65    65                         START 1
+       66    66                         END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=H1            2=H2            3=H3            22=H4           28=H5           34=H6           
+                   40=H7           46=H8
+
+           Queues: 1=H1Q           2=H2Q           3=H3Q           4=H4Q           5=H5Q           6=H6Q           
+                   7=H7Q           8=H8Q
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+H4          22          27  Block           17    25    46
+H5          28          34  Block            9    17
+H6          34          41  Block           25    32    53
+H7          40          48  Block            9    32    39
+H8          46          55  Block           46    53
+ 
+H1           1              Facility         5     8
+H2           2              Facility        13    16
+H3           3              Facility        21    24
+H4          22              Facility        28    31
+H5          28              Facility        35    38
+H6          34              Facility        42    45
+H7          40              Facility        49    52
+H8          46              Facility        56    59
+ 
+H1Q          1              Queue            4     6
+H2Q          2              Queue           12    14
+H3Q          3              Queue           20    22
+H4Q          4              Queue           27    29
+H5Q          5              Queue           34    36
+H6Q          6              Queue           41    43
+H7Q          7              Queue           48    50
+H8Q          8              Queue           55    57
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     1098
+Compiled Data:      160
+Miscellaneous:        0
+Entities:          3168
+Common:           10000
+-----------------------
+Total:            14426
+
+
+
+GPSS/H Model Size:
+
+Control Statements      3
+Blocks                 53
+
+
+
+Simulation begins.
+
+Relative Clock: 100.0000   Absolute Clock: 100.0000
+
+
+
+Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total  Block Current     Total
+1                     9  11                    4  21                    6  31          1         4  41                    5 
+2                     9  12                    4  H4          2         7  32                    3  42                    5 
+3                     9  13                    4  23                    5  33                    3  43          1         5 
+4                     9  14                    4  24                    5  H6          2         6  44                    4 
+5           1         9  15                    9  25          1         5  35                    4  45                    4 
+6                     8  16          2         9  26                    4  36                    4  H8          1         4 
+7                     8  17                    7  27                    4  37          1         4  47                    3 
+8                     4  18                    7  H5          1         5  38                    3  48                    3 
+9                     4  19          1         7  29                    4  39                    3  49          1         3 
+10                    4  20                    6  30                    4  H7          5        10  50                    2 
+
+
+
+Block Current     Total  
+51                    2 
+52                    1 
+53                    1 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+      H1  0.900                         9      10.000    AVAIL               23 
+      H2  0.480                         4      12.000    AVAIL                  
+      H3  0.900                         7      12.857    AVAIL               19 
+      H4  0.650                         5      13.000    AVAIL               14 
+      H5  0.580                         4      14.500    AVAIL               18 
+      H6  0.600                         4      15.000    AVAIL                7 
+      H7  0.790                         5      15.800    AVAIL               10 
+      H8  0.480                         3      16.000    AVAIL                1 
+
+
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+     H1Q           1        0.360           9           1       11.1         4.000         4.500                      0
+     H2Q           1        0.000           4           4      100.0         0.000         0.000                      0
+     H3Q           2        0.930           9           1       11.1        10.333        11.625                      2
+     H4Q           2        0.620           7           2       28.6         8.857        12.400                      2
+     H5Q           1        0.060           5           3       60.0         1.200         3.000                      1
+     H6Q           2        0.450           6           2       33.3         7.500        11.250                      2
+     H7Q           6        2.310          10           1       10.0        23.100        25.667                      5
+     H8Q           2        0.470           4           1       25.0        11.750        15.667                      1
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      100029          29       N/A
+
+
+
+Status of Common Storage
+
+    6888 bytes available
+    3112 in use
+    3224 used (max)
+
+Simulation complete.  Absolute Clock: 100.0000
+
+
+
+Total Block Executions: 269
+
+Blocks / second:        10979591
+
+Microseconds / Block:   0.09
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00
