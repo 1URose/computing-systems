@@ -1,0 +1,27 @@
+        SIMULATE
+
+        INITIAL XB$BUF,0
+        INITIAL XB$GOTOC,0
+        INITIAL XB$BUFFLEN,15
+
+        GENERATE ,,,1
+MET1    TEST L XB$BUF,XB$BUFFLEN
+        ADVANCE 7
+        SAVEVALUE BUF+,1,XB
+        TRANSFER ,MET1
+
+        GENERATE ,,,1
+MET2    TEST G XB$BUF,0
+        SAVEVALUE BUF-,1,XB
+        SEIZE CPU
+        ADVANCE 20,5
+        RELEASE CPU
+        TRANSFER .97,,MET2
+        SAVEVALUE BUF,0,XB
+        SAVEVALUE GOTOC+,1,XB
+        TRANSFER ,MET2
+
+        GENERATE 3000
+        TERMINATE 1
+        START 1
+        END
