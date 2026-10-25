@@ -1,0 +1,27 @@
+        SIMULATE
+
+        INITIAL XB$GOTOC,0
+        INITIAL XB$BUFFLEN,15
+
+        GENERATE ,,,1
+MET1    TEST L CH$AAA,XB$BUFFLEN
+        ADVANCE 7
+        SPLIT 1,MET1
+        LINK AAA,FIFO
+MET3    TERMINATE
+
+        GENERATE ,,,1
+MET2    TEST G CH$AAA,0
+        UNLINK AAA,MET3,1
+        SEIZE CPU
+        ADVANCE 20,5
+        RELEASE CPU
+        TRANSFER .97,,MET2
+        UNLINK AAA,MET3,ALL
+        SAVEVALUE GOTOC+,1,XB
+        TRANSFER ,MET2
+
+        GENERATE 3000
+        TERMINATE 1
+        START 1
+        END

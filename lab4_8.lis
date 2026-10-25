@@ -1,0 +1,147 @@
+    Student GPSS/H Release 3.70 (CT256)     25 Oct 2026   16:12:25     File: lab4_8.gps
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                         SIMULATE
+        2     2                  
+        3     3                         INITIAL XB$GOTOC,0
+        4     4                         INITIAL XB$BUFFLEN,15
+        5     5                  
+        6     6              1          GENERATE ,,,1
+        7     7              2  MET1    TEST L CH$AAA,XB$BUFFLEN
+        8     8              3          ADVANCE 7
+        9     9              4          SPLIT 1,MET1
+       10    10              5          LINK AAA,FIFO
+       11    11              6  MET3    TERMINATE
+       12    12                  
+       13    13              7          GENERATE ,,,1
+       14    14              8  MET2    TEST G CH$AAA,0
+       15    15              9          UNLINK AAA,MET3,1
+       16    16             10          SEIZE CPU
+       17    17             11          ADVANCE 20,5
+       18    18             12          RELEASE CPU
+       19    19             13          TRANSFER .97,,MET2
+       20    20             14          UNLINK AAA,MET3,ALL
+       21    21             15          SAVEVALUE GOTOC+,1,XB
+       22    22             16          TRANSFER ,MET2
+       23    23                  
+       24    24             17          GENERATE 3000
+       25    25             18          TERMINATE 1
+       26    26                         START 1
+       27    27                         END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 1=CPU
+
+      User Chains: 1=AAA
+
+     Byte Savexes: 1=GOTOC         2=BUFFLEN
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+MET1         2           7  Block            9
+MET2         8          14  Block           19    22
+MET3         6          11  Block           15    20
+ 
+CPU          1              Facility        16    18
+ 
+AAA          1              User Chain       7    10    14    15    20
+ 
+BUFFLEN      2              Byte Svx         4     7
+GOTOC        1              Byte Svx         3    21
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     1026
+Compiled Data:      140
+Miscellaneous:        0
+Entities:           371
+Common:           10000
+-----------------------
+Total:            11537
+
+
+
+GPSS/H Model Size:
+
+Control Statements      5
+Blocks                 18
+
+
+
+Simulation begins.
+
+Relative Clock: 3000.0000   Absolute Clock: 3000.0000
+
+
+
+Block Current     Total  Block Current     Total  
+1                     1  11          1       145 
+MET1                218  12                  144 
+3                   218  13                  144 
+4           1       436  14                    5 
+5          15       218  15                    5 
+MET3                203  16                    5 
+7                     1  17                    1 
+MET2                145  18                    1 
+9                   145 
+10                  145 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+     CPU  0.974                       145      20.142    AVAIL                2 
+
+
+
+User Chain   Entries    Average      Average     Current     Maximum
+                       Time/Xact    Contents    Contents    Contents
+     AAA         218     173.103      12.579          15          15 
+
+
+
+Non-zero Byte Savevalues:  (NAME : VALUE)
+
+   GOTOC:           5,  BUFFLEN:          15
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      100289         289      0.94
+
+
+
+Status of Common Storage
+
+    7800 bytes available
+    2200 in use
+    2312 used (max)
+
+Simulation complete.  Absolute Clock: 3000.0000
+
+
+
+Total Block Executions: 2180
+
+Blocks / second:        7175774
+
+Microseconds / Block:   0.14
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.00
+Sym/Xref         0.00
+Pass2:           0.00
+Load/Ctrl:       0.00
+Execution:       0.00
+Output:          0.00
+---------------------
+Total:           0.00
