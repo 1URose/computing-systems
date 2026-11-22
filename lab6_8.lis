@@ -1,0 +1,201 @@
+    Student GPSS/H Release 3.70 (CT256)     22 Nov 2026   20:45:35     File: lab6_var8.gps
+
+    Line# Stmt#  If Do  Block#  *Loc	Operation	A,B,C,D,E,F,G	Comments  
+ 
+        1     1                         SIMULATE
+        2     2                 CVM     EQU 5,F
+        3     3                 SAT     FUNCTION P1,E4
+        4     4                 1,5/2,6/3,4/4,7
+        5     5                 CENT    FUNCTION P1,E4
+        6     6                 1,FN$RD1/2,FN$RD2/3,FN$RD3/4,2
+        7     7                 RD1     FUNCTION RN1,D3
+        8     8                 .2,1/.4,3/1,4
+        9     9                 RD2     FUNCTION RN1,D3
+       10    10                 .1,3/.5,5/1,4
+       11    11                 RD3     FUNCTION RN1,D2
+       12    12                 .5,5/1,3
+       13    13                         INITIAL X1,0
+       14    14                         INITIAL X2,0
+       15    15                         INITIAL X3,0
+       16    16                         INITIAL X4,0
+       17    17                         INITIAL X5,0
+       18    18                         INITIAL X6,0
+       19    19                         INITIAL X7,0
+       20    20                         INITIAL X8,0
+       21    21                  
+       22    22              1          GENERATE ,,,1
+       23    23              2          SPLIT 3,INIT,1
+       24    24              3  INIT    TEST E P1,4,LOCAL
+       25    25              4          PRIORITY 10
+       26    26              5  LOCAL   SEIZE P1
+       27    27              6          ADVANCE FN$SAT
+       28    28              7          RELEASE P1
+       29    29              8          SAVEVALUE 5+,1
+       30    30              9          QUEUE WAITC
+       31    31             10          SAVEVALUE 6+,1
+       32    32             11          TEST E P1,4,LOW
+       33    33             12          TEST E F$CVM,0,INTR
+       34    34             13          TRANSFER ,HIGH
+       35    35             14  INTR    SAVEVALUE 7+,1
+       36    36             15  HIGH    PREEMPT CVM,PR
+       37    37             16          DEPART WAITC
+       38    38             17          ADVANCE FN$CENT
+       39    39             18          RETURN CVM
+       40    40             19          TRANSFER ,DONE
+       41    41             20  LOW     SEIZE CVM
+       42    42             21          DEPART WAITC
+       43    43             22          ADVANCE FN$CENT
+       44    44             23          RELEASE CVM
+       45    45             24  DONE    SAVEVALUE P1+,1
+       46    46             25          SAVEVALUE 8+,1
+       47    47             26          TRANSFER ,LOCAL
+       48    48                  
+       49    49             27          GENERATE 1000
+       50    50             28          TERMINATE 1
+       51    51                         START 1
+       52    52                         END
+
+Entity Dictionary (in ascending order by entity number; "*" => value conflict.)
+
+       Facilities: 5=CVM
+
+           Queues: 1=WAITC
+
+        Functions: 1=SAT           2=CENT          3=RD1           4=RD2           5=RD3
+
+ Fullword Savexes: 1               2               3               4               5               6               
+                   7               8
+
+       Parameters: 1
+
+   Random Numbers: 1
+
+Symbol   Value   EQU Defns  Context      References by Statement Number
+ 
+DONE        24          45  Block           40
+HIGH        15          36  Block           34
+INIT         3          24  Block           23
+INTR        14          35  Block           33
+LOCAL        5          26  Block           24    47
+LOW         20          41  Block           32
+ 
+CVM          5     2        Facility        33    36    39    41    44
+ 
+WAITC        1              Queue           30    37    42
+ 
+CENT         2           5  Function        38    43
+RD1          3           7  Function         6
+RD2          4           9  Function         6
+RD3          5          11  Function         6
+SAT          1           3  Function        27
+ 
+1            1              Fullword Svx    13
+2            2              Fullword Svx    14
+3            3              Fullword Svx    15
+4            4              Fullword Svx    16
+5            5              Fullword Svx    17    29
+6            6              Fullword Svx    18    31
+7            7              Fullword Svx    19    35
+8            8              Fullword Svx    20    46
+ 
+1            1              Parameter        3     5    23    24    26    28    32    45
+ 
+1            1              Random Nmbr      7     9    11
+
+
+
+Storage Requirements (Bytes)
+
+Compiled Code:     1750
+Compiled Data:      228
+Miscellaneous:        0
+Entities:          1886
+Common:           10000
+-----------------------
+Total:            13864
+
+
+
+GPSS/H Model Size:
+
+Control Statements     16
+Blocks                 28
+
+Simulation begins.
+
+Relative Clock: 1000.0000   Absolute Clock: 1000.0000
+
+
+
+Block Current     Total  Block Current     Total  Block Current     Total  
+1                     1  11          1       313  21                  201 
+2                     4  12                  111  22          1       201 
+INIT                  4  13                    0  23                  200 
+4                     1  INTR                111  DONE                311 
+LOCAL               315  HIGH                111  25                  311 
+6           2       315  16                  111  26                  311 
+7                   313  17                  111  27                    1 
+8                   313  18                  111  28                    1 
+9                   313  19                  111 
+10                  313  LOW                 201 
+
+
+
+          --Avg-Util-During--                                                               
+Facility  Total  Avail  Unavl     Entries    Average   Current  Percent  Seizing  Preempting
+           Time   Time   Time               Time/Xact   Status   Avail     Xact      Xact   
+       1  0.339                        68       4.985    AVAIL                1 
+       2  0.402                        67       6.000    AVAIL                  
+       3  0.272                        68       4.000    AVAIL                  
+       4  0.778                       112       6.946    AVAIL                5 
+     CVM  0.996                       312       3.192    AVAIL                3 
+
+
+
+   Queue     Maximum      Average       Total        Zero     Percent      Average      $Average     Qtable     Current
+            Contents     Contents      Entries     Entries     Zeros      Time/Unit    Time/Unit     Number    Contents
+   WAITC           3        1.045         313         118       37.7         3.339         5.359                      1
+
+
+
+Non-zero Fullword Savevalues:  (NAME : VALUE)
+
+       1:          67,        2:          66,        3:          67,        4:         111,        5:         313,
+       6:         313,        7:         111,        8:         311
+
+
+
+  Random    Antithetic     Initial     Current      Sample   Chi-Square
+  Stream      Variates    Position    Position       Count   Uniformity
+       1           OFF      100000      100201         201      0.66
+
+
+
+Status of Common Storage
+
+    9152 bytes available
+     848 in use
+     960 used (max)
+
+Simulation complete.  Absolute Clock: 1000.0000
+
+
+
+Total Block Executions: 4720
+
+Blocks / second:        904163
+
+Microseconds / Block:   1.11
+
+
+
+Elapsed Time Used (Sec)
+ 
+Pass1:           0.01
+Sym/Xref         0.01
+Pass2:           0.01
+Load/Ctrl:       0.00
+Execution:       0.01
+Output:          0.00
+---------------------
+Total:           0.04
